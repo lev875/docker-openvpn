@@ -1,0 +1,13 @@
+{
+
+    "description": "Allow local OpenVPN",
+
+    "filter": [
+        {
+            "in": "WAN",
+            "out": "_fw",
+            "service": "openvpn",
+            "action": "accept"
+        }
+    ]
+}
