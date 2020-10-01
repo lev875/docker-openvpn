@@ -4,11 +4,11 @@ services:
   openvpn:
     image: llnpce/openvpn
     ports:
-      - "${GPA_OPENVPN_PORT}/udp:1194/udp"
+      - "${GPA_OPENVPN_PORT}:1194/udp"
     devices:
       - "/dev/net/tun:/dev/net/tun"
     cap_add:
       - NET_ADMIN
     volumes:
-      - ".:/etc/openvpn"
+      - ".:/etc/openvpn/pki"
       - "/var/log/openvpn:/var/log/openvpn/"
