@@ -2,9 +2,9 @@ version: '3.0'
 services:
   
   openvpn:
-    image: llnpce/openvpn:0.3
+    image: llnpce/openvpn
     ports:
-      - "${PORT}:1194/udp"
+      - "${GPA_OPENVPN_PORT}/udp:1194/udp"
     devices:
       - "/dev/net/tun:/dev/net/tun"
     cap_add:
