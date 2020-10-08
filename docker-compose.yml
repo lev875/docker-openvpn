@@ -12,3 +12,4 @@ services:
     volumes:
       - ".:/etc/openvpn/pki"
       - "/var/log/openvpn:/var/log/openvpn/"
+    restart: always
