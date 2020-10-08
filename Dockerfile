@@ -54,4 +54,9 @@ RUN chmod +x /usr/local/bin/start_openvpn.sh
 ENTRYPOINT ["/usr/local/bin/start_openvpn.sh"]
 CMD [ "--config", "/etc/openvpn/server.conf" ]
 
-# docker run -i --device /dev/net/tun:/dev/net/tun -v `pwd`:/openvpn/etc -v /var/log/openvpn:/var/log/openvpn --entrypoint /bin/ash --cap-add NET_ADMIN -p 42272:1194/udp -t llnpce/openvpn
+# docker run -i \
+# --device /dev/net/tun:/dev/net/tun \
+# -v `pwd`:/etc/openvpn/pki -v /var/log/openvpn:/var/log/openvpn \
+# --entrypoint /bin/ash \
+# --cap-add NET_ADMIN \
+# -p 1194:1194/udp -t llnpce/openvpn
