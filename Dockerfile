@@ -1,6 +1,6 @@
 FROM alpine/git as BUILD_STAGE
 
-ARG VERSION_TAG=v2.4.9
+ARG VERSION_TAG=v2.5.1
 ARG MAKEFLAGS="-j4"
 ARG BUILD_ARGS="\
     --prefix=/openvpn/build \
@@ -17,11 +17,12 @@ ARG BUILD_DEPENDANCIES="\
     openssl-dev \
     lz4-dev \
     linux-pam-dev \
-    libselinux-dev"
+    libselinux-dev \
+    py-docutils"
 
-RUN apk add ${BUILD_DEPENDANCIES}
-RUN mkdir /openvpn/{src,build} -p
 WORKDIR /openvpn/src
+RUN apk update && apk add ${BUILD_DEPENDANCIES}
+RUN mkdir /openvpn/build
 RUN git clone https://github.com/OpenVPN/openvpn.git --branch ${VERSION_TAG} --depth 1 .
 RUN autoreconf -i -v -f
 RUN ./configure ${BUILD_ARGS}
